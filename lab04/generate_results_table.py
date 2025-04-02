@@ -1,36 +1,33 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression, Ridge, ElasticNet
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from tabulate import tabulate
 
-# Example function to generate a results table
-def generate_results():
-    # Here you would load and process your data (e.g., Titanic dataset)
-    # This is just a mock-up example
-    data = {
-        'Model': ['Linear Regression', 'Ridge Regression', 'ElasticNet', 'Polynomial Regression'],
-        'R^2': [0.85, 0.83, 0.84, 0.87],
-        'MAE': [10.5, 11.2, 10.8, 9.9],
-        'RMSE': [12.0, 13.5, 12.3, 11.7],
-    }
+# Define your model evaluation results
+models = ['Linear Regression', 'Ridge Regression', 'ElasticNet Regression', 'Polynomial Regression']
+r2_scores = [0.4429978856405674, 0.44313023237980076, 0.0745403363393774, 0.3832193922112488]
+mae_scores = [0.28514552488606887, 0.28572889500964493, 0.45121638917580764, 0.27885967706821485]
+rmse_scores = [0.3675241656199244, 0.3674805001532071, 0.47373582221014765, 0.38674333122661997]
 
-    # Create DataFrame
-    df_results = pd.DataFrame(data)
+# Create the table data (without the "R²", "MAE", "RMSE" labels)
+table_data = []
+for i in range(len(models)):
+    table_data.append([models[i], r2_scores[i], mae_scores[i], rmse_scores[i]])
 
-    # Save the results table to a .png file
-    fig, ax = plt.subplots(figsize=(8, 3))
-    ax.axis('tight')
-    ax.axis('off')
-    table = ax.table(cellText=df_results.values, colLabels=df_results.columns, loc='center')
-    table.auto_set_font_size(False)
-    table.set_fontsize(10)
-    table.auto_set_column_width(col=list(range(len(df_results.columns))))
+# Define table headers
+headers = ['Model', 'R²', 'MAE', 'RMSE']
 
-    # Save the table as an image
-    plt.savefig('results_table.png', dpi=300, bbox_inches='tight')
-    plt.show()
+# Create the table string
+table = tabulate(table_data, headers=headers, tablefmt='grid')
 
-# Run the function to generate the table
-if __name__ == "__main__":
-    generate_results()
+# Print the table to see if it's correctly formatted
+print(table)
+
+# Create the plot (saving the table as an image)
+fig, ax = plt.subplots(figsize=(10, 3))  # Set the size of the table
+ax.axis('tight')
+ax.axis('off')
+ax.table(cellText=table_data, colLabels=headers, loc='center')
+
+# Save the table as an image
+plt.savefig('results_table.png', dpi=300, bbox_inches='tight')
+
+plt.show()  # Optionally show the table image
