@@ -19,6 +19,7 @@ headers = ['Model', 'R²', 'MAE', 'RMSE']
 table = tabulate(table_data, headers=headers, tablefmt='grid')
 
 # Print the table to see if it's correctly formatted
+print("Here is the results table:")  # Changed the wording
 print(table)
 
 # Create the plot (saving the table as an image)
