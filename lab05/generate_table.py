@@ -25,14 +25,14 @@ data = {
 df = pd.DataFrame(data)
 
 # Plot the table
-fig, ax = plt.subplots(figsize=(12, 6))  # Set the figure size
+fig, ax = plt.subplots(figsize=(14, 6))  # Set the figure size for clarity
 ax.axis('off')  # Hide axes
 tbl = table(ax, df, loc='center', colWidths=[0.2] * len(df.columns))
 
 # Style the table
 tbl.auto_set_font_size(False)  # Disable auto font size
-tbl.set_fontsize(10)  # Set font size
-tbl.scale(1.2, 1.2)  # Scale table to make it larger
+tbl.set_fontsize(12)  # Set font size for better readability
+tbl.scale(1.5, 1.5)  # Increase scale to make the table larger and more readable
 
-# Save as PNG
-plt.savefig("ensemble_models_table.png", bbox_inches="tight", dpi=300)
+# Save the table as PNG
+plt.savefig("ensemble_models_table_clear.png", bbox_inches="tight", dpi=300)
