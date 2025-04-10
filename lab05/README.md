@@ -12,7 +12,7 @@ The goal of this lab is to:
 The following steps are performed throughout the notebook:
 
 ### 1. Importing Libraries
-Necessary libraries are imported for data manipulation, model training, and evaluation. This includes libraries like pandas, numpy, matplotlib, scikit-learn, etc.
+Necessary libraries are imported for data manipulation, model training, and evaluation. This includes libraries like `pandas`, `numpy`, `matplotlib`, `scikit-learn`, etc.
 
 ### 2. Loading the Data
 The Wine Quality dataset is loaded and inspected. The dataset contains 12 features, including alcohol content, acidity levels, and other chemical properties, along with the wine quality label.
